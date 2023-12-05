@@ -14,20 +14,20 @@ Follow these steps to integrate the Flutter Power Management Plugin into your pr
 
 1.  **Clone the Repository:** Clone the plugin repository into your project's `lib` folder using the following command:
     
-    bashCopy code
+   ```bash
     
     `git clone https://github.com/furkanansn/flutter_power_management_dont_kill_my_app_plugin.git` 
-    
+ ```
 2.  **Update `pubspec.yaml`:** In your project's `pubspec.yaml` file, add the plugin dependency. Modify the `dependencies` section as shown below, replacing `<project path here>` with the actual path to the plugin in your project.
     
-    yamlCopy code
+    ```yaml
     
     `dependencies:
       flutter:
         sdk: flutter
       power_management:
         path: /<project path here>/power_management # Example: path: /Users/admin/Documents/YourApp/power_management` 
-    
+    ```
 3.  **Import the Package:** Import the package into your Dart file where you want to use it.
     
     dartCopy code
@@ -36,7 +36,7 @@ Follow these steps to integrate the Flutter Power Management Plugin into your pr
     
 4.  **Integrate into `initState`:** Invoke the power-saving feature in the `initState` method of your widget. This ensures that the power management optimization takes place early in the app lifecycle.
     
-    dartCopy code
+    ```dart
     
     `@override
     void initState() {
@@ -45,7 +45,7 @@ Follow these steps to integrate the Flutter Power Management Plugin into your pr
       });
       super.initState();
     }` 
-    
+    ```
 5.  **Enjoy Improved Performance:** With the Flutter Power Management Plugin integrated into your project, you can now enjoy enhanced app performance and prevent background termination issues.
     
 
