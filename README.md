@@ -27,7 +27,7 @@ class ListService extends BaseNetwork with ILocalUtil {
   }
 
 }
-```bash
+```
 
 Ensure you replace 'path_to_base_network.dart' and 'path_to_local_util.dart' with the actual paths to the base network and local utility classes in your project.
 
