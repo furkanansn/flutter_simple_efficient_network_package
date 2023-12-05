@@ -1,40 +1,52 @@
+# Optimizing Battery Life with the Flutter Power Management Plugin
 
-**Network Operations Library for Dart**
+## Introduction
 
-**Overview**
+Efficient battery usage is crucial for a positive user experience on Android devices. However, some Android phones can be overly aggressive in managing background processes, leading to poor app performance and missed notifications. This Flutter plugin addresses this issue by preventing your app from being prematurely killed in the background.
 
-This repository provides a set of classes to simplify and optimize your network operations. The classes are designed with an object-oriented layer architecture, offering a seamless way to modify headers with minimal code. Integrating these classes into your project enhances code organization and facilitates efficient network-related tasks.
+## Plugin Overview
 
-Key Features
-Object-Oriented Architecture: Utilize an object-oriented programming (OOP) layer for effortless header modification. This approach minimizes code complexity and enhances the overall maintainability and readability of your code.
-How to Use
-Example
-```dart
+The purpose of this plugin is to safeguard your app from being terminated by aggressive power management policies on certain Android devices. By integrating this plugin into your Flutter project, you can ensure that your app continues to run smoothly and deliver notifications without interruptions.
 
-// Import the necessary classes
-import 'path_to_base_network.dart'; // Replace with the actual import path
-import 'path_to_local_util.dart';   // Replace with the actual import path
+## How to Use
 
-// Create a class using the provided base network and local utility
-class ListService extends BaseNetwork with ILocalUtil {
+Follow these steps to integrate the Flutter Power Management Plugin into your project:
 
-  // Define a method to retrieve a list of MyModel objects for the month
-  Future<List<MyModel>> getMonthList() async {
-    // Make a network request using the 'request' method
-    final response = await request(
-        url: "api/list/getMonths",
-        token: await getLocalData(key: "token"),
-        requestType: "Get");
-        
-    // Convert the response to a list of MyModel objects
-    return (response as List)
-        .map((e) => MyModel.fromJson(e))
-        .toList();
-  }
+1.  **Clone the Repository:** Clone the plugin repository into your project's `lib` folder using the following command:
+    
+    bashCopy code
+    
+    `git clone https://github.com/furkanansn/flutter_power_management_dont_kill_my_app_plugin.git` 
+    
+2.  **Update `pubspec.yaml`:** In your project's `pubspec.yaml` file, add the plugin dependency. Modify the `dependencies` section as shown below, replacing `<project path here>` with the actual path to the plugin in your project.
+    
+    yamlCopy code
+    
+    `dependencies:
+      flutter:
+        sdk: flutter
+      power_management:
+        path: /<project path here>/power_management # Example: path: /Users/admin/Documents/YourApp/power_management` 
+    
+3.  **Import the Package:** Import the package into your Dart file where you want to use it.
+    
+    dartCopy code
+    
+    `import 'package:power_management/power_management.dart';` 
+    
+4.  **Integrate into `initState`:** Invoke the power-saving feature in the `initState` method of your widget. This ensures that the power management optimization takes place early in the app lifecycle.
+    
+    dartCopy code
+    
+    `@override
+    void initState() {
+      Future.delayed(Duration(seconds: 0), () async {
+        await PowerManagement.powerSaving;
+      });
+      super.initState();
+    }` 
+    
+5.  **Enjoy Improved Performance:** With the Flutter Power Management Plugin integrated into your project, you can now enjoy enhanced app performance and prevent background termination issues.
+    
 
-}
-```
-Ensure you replace 'path_to_base_network.dart' and 'path_to_local_util.dart' with the actual paths to the base network and local utility classes in your project.
-
-Feel free to customize the getMonthList method to suit your specific use case. This example serves as a template for making network requests and handling responses efficiently.
-
+Feel free to explore additional features and customization options provided by the plugin to tailor its behavior to your app's specific requirements. Happy coding!
